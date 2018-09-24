@@ -49,22 +49,25 @@ const exercisesArray = [
 //  [['shoulders', [practice1, practice2,...]], ['arms',[practice1, practice2...], ...]
 function getExercisesByMuscles(exercises) {
   console.log("exercises:", exercises)
+
+  // initialMuscleRelatedExercises= {muscle1:[], muscle2:[],muscle3:[],...}
+  const initialMuscleRelatedExercises = muscles.reduce((accumulator, muscle) => ({
+      ...accumulator,
+      [muscle]: []
+    }
+  ), {})
+
+
   return Object.entries(
     exercises.reduce((accumulator, currentExercise) => {
-      const { muscles } = currentExercise
-
-      accumulator[muscles] = accumulator[muscles]
-        ? [...accumulator[muscles], currentExercise]
-        : [currentExercise]
-
-      // 				console.log("accumulator[muscles]:", accumulator[muscles])
-      // 				console.log("accumulator: ", accumulator)
+      const {muscles} = currentExercise
+      accumulator[muscles] = [...accumulator[muscles], currentExercise]
 
       return accumulator
-    }, {})
+    }, initialMuscleRelatedExercises)
   )
 }
 
 const exercisesKeyValueArray = getExercisesByMuscles(exercisesArray)
 
-export { muscles, exercisesArray, getExercisesByMuscles }
+export {muscles, exercisesArray, getExercisesByMuscles}

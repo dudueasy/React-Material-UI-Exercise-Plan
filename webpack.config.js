@@ -15,7 +15,7 @@ module.exports = {
   },
   output: {
     // 定义输出文件名, 这里使用 webpack 变量, [name] 是入口名, 此处对应 app, [hash]是打包完成的文件的哈希值, 用于和浏览器缓存协作.
-    filename: '[name].[hash].js',
+    filename: 'bundle.js',
 
     // bundle 输出位置
     path: path.join(__dirname, './dist'),

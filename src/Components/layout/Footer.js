@@ -27,7 +27,7 @@ export default class Footer extends React.Component {
         <Tabs
           value={selectedCategoryIndex}
           onChange={(e, index) => {
-            this.props.handleCategorySelected(e, index)
+            this.props.handleCategorySelect(e, index)
           }}
           indicatorColor="primary"
           textColor="primary"

@@ -1,3 +1,4 @@
+import React, {Fragment} from "react"
 import {
   Grid,
   Paper,
@@ -10,10 +11,9 @@ import {
 } from "@material-ui/core"
 
 // import CommentIcon from '@material-ui/icons/Comment';
-import Delete from '@material-ui/icons/Delete';
+import {Edit, Delete} from '@material-ui/icons/';
 
-
-import React, {Fragment} from "react"
+import Form from './Form'
 
 const styles = {
   Paper: {
@@ -27,14 +27,18 @@ const styles = {
 export default ({
                   allExercises,
                   category,
-                  handleExerciseSelected,
+                  musclesList,
+                  handleExerciseSelect,
+                  currentExercise,
                   currentExercise: {
                     id,
                     title = "welcome",
                     description = " please select an exercise from the list on the left"
                   },
-                  onDelete
-
+                  onDelete,
+                  onSelectEdit,
+                  editMode,
+                  onEdit
                 }) => (
   <React.Fragment>
     <Grid container>
@@ -42,7 +46,8 @@ export default ({
         <Paper style={styles.Paper}>
           {allExercises.map(
             ([muscle, currentMuscleRelatedExercises]) =>
-              //             apply filter based on props.category
+
+              // applying filter base on props.category
               !category || category === muscle ? (
                 <Fragment key={muscle}>
                   <Typography
@@ -57,14 +62,17 @@ export default ({
                         <ListItem
                           button
                           onClick={() => {
-                            handleExerciseSelected(id)
+                            handleExerciseSelect(id)
                           }}
                           key={id}
                         >
-                          <ListItemText primary={title} />
+                          <ListItemText primary={title}/>
                           <ListItemSecondaryAction>
-                            <IconButton onClick={()=> onDelete(id) }>
-                              <Delete />
+                            <IconButton onClick={() => onSelectEdit(id)}>
+                              <Edit/>
+                            </IconButton>
+                            <IconButton onClick={() => onDelete(id)}>
+                              <Delete/>
                             </IconButton>
 
                           </ListItemSecondaryAction>
@@ -80,10 +88,22 @@ export default ({
       </Grid>
       <Grid item xs>
         <Paper style={styles.Paper}>
-          <Typography variant="display1">{title}</Typography>
-          <Typography variant="subheading" style={{marginTop: 20}}>
-            {description}
-          </Typography>
+          {editMode
+            ? <Form
+              onSubmit={onEdit}
+              musclesList={musclesList}
+              currentExercise={currentExercise}
+              key={currentExercise.id}
+            >
+            </Form>
+            :
+            <React.Fragment>
+              <Typography variant="display1">{title}</Typography>
+              <Typography variant="subheading" style={{marginTop: 20}}>
+                {description}
+              </Typography>
+            </React.Fragment>
+          }
         </Paper>
       </Grid>
     </Grid>
