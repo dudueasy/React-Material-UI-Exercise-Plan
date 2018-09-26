@@ -12,38 +12,74 @@ import {
 
 // import CommentIcon from '@material-ui/icons/Comment';
 import {Edit, Delete} from '@material-ui/icons/';
+import {withStyles} from "@material-ui/core/styles"
 
 import Form from './Form'
 
-const styles = {
-  Paper: {
-    padding: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    height: 400,
-    overflow: "auto"
+const styles = theme => ({
+    paper: {
+      padding: 20,
+      overflowY: "auto",
+      [theme.breakpoints.up('sm')]: {
+        marginTop: 5,
+        height: 'calc( 100% - 10px) '
+      },
+      [theme.breakpoints.down('xs')]: {
+        height: '100%'
+      }
+    },
+    '@global': {
+      'html': {
+        'position': 'fixed '
+      },
+      'html, body, #root': {
+        height: '100%',
+        width: '100%'
+      }
+    },
+    container: {
+      [theme.breakpoints.up('sm')]:
+        {
+          height: 'calc( 100% - 64px - 48px) '
+        }
+      ,
+
+      [theme.breakpoints.down('xs')]:
+        {
+          height: 'calc( 100% - 56px - 48px) '
+        }
+    }
+    ,
+    item: {
+      [theme.breakpoints.down('xs')]:
+        {
+          height: '50%'
+        }
+    }
   }
-}
-export default ({
-                  allExercises,
-                  category,
-                  musclesList,
-                  handleExerciseSelect,
-                  currentExercise,
-                  currentExercise: {
-                    id,
-                    title = "welcome",
-                    description = " please select an exercise from the list on the left"
-                  },
-                  onDelete,
-                  onSelectEdit,
-                  editMode,
-                  onEdit
-                }) => (
+)
+
+export default withStyles(styles)(({
+                                     classes,
+                                     allExercises,
+                                     category,
+                                     musclesList,
+                                     handleExerciseSelect,
+                                     currentExercise,
+                                     currentExercise: {
+                                       id,
+                                       title = "welcome",
+                                       description = " please select an exercise from the list on the left"
+                                     },
+                                     onDelete,
+                                     onSelectEdit,
+                                     editMode,
+                                     onEdit
+                                   }) => (
   <React.Fragment>
-    <Grid container>
-      <Grid item xs={5} sm={4}>
-        <Paper style={styles.Paper}>
+    <Grid container className={classes.container}>
+      <Grid item xs={12} sm={5} className={classes.item}>
+        <Paper className={classes.paper}>
           {allExercises.map(
             ([muscle, currentMuscleRelatedExercises]) =>
 
@@ -86,26 +122,27 @@ export default ({
           )}
         </Paper>
       </Grid>
-      <Grid item xs>
-        <Paper style={styles.Paper}>
+      <Grid item xs={12} sm={7} className={classes.item}>
+        <Paper className={classes.paper}>
+          <Typography variant="display1"
+                      gutterBottom>
+            {title}
+          </Typography>
           {editMode
             ? <Form
               onSubmit={onEdit}
               musclesList={musclesList}
               currentExercise={currentExercise}
-              key={currentExercise.id}
+              key={id}
             >
             </Form>
             :
-            <React.Fragment>
-              <Typography variant="display1">{title}</Typography>
-              <Typography variant="subheading" style={{marginTop: 20}}>
-                {description}
-              </Typography>
-            </React.Fragment>
+            <Typography variant="subheading">
+              {description}
+            </Typography>
           }
         </Paper>
       </Grid>
     </Grid>
   </React.Fragment>
-)
+))

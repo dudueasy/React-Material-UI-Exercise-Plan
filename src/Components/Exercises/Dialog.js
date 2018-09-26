@@ -7,6 +7,7 @@ import DialogTitle from "@material-ui/core/DialogTitle"
 import AddIcon from "@material-ui/icons/Add"
 
 import Form from './Form'
+import {Consumer} from '../../context'
 
 
 export default class CreateDialog extends React.Component {
@@ -18,7 +19,7 @@ export default class CreateDialog extends React.Component {
     this.setState({open: !this.state.open})
   }
 
-  handleFormSubmit = (exercise)=>{
+  handleFormSubmit = (exercise) => {
     this.handleClickToggle()
     this.props.onCreate(exercise)
   }
@@ -28,37 +29,42 @@ export default class CreateDialog extends React.Component {
     const {musclesList, onCreate} = this.props
 
     return (
-      <React.Fragment>
-        <Button
-          onClick={this.handleClickToggle}
-          variant="fab"
-          color="default"
-          aria-label="add"
-          mini
-        >
-          <AddIcon/>
-        </Button>
+      <Consumer>
+       {  ({exercisesArray, currentExercise, category, editMode,musclesList}) =>
+        <React.Fragment>
+          <Button
+            onClick={this.handleClickToggle}
+            variant="fab"
+            color="secondary"
+            aria-label="add"
+            mini
+          >
+            <AddIcon/>
+          </Button>
 
-        <Dialog
-          open={open}
-          onClose={this.handleClickToggle}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">Create an exercise</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Please fill out the form below
-            </DialogContentText>
+          <Dialog
+            open={open}
+            onClose={this.handleClickToggle}
+            aria-labelledby="form-dialog-title"
+            fullWidth={true}
+            maxWidth='sm'
+          >
+            <DialogTitle id="form-dialog-title">Create an exercise</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                Please fill out the form below
+              </DialogContentText>
 
-            <Form
-              musclesList={musclesList}
-              onSubmit={this.handleFormSubmit }
-            />
+              <Form
+                musclesList={musclesList}
+                onSubmit={this.handleFormSubmit}
+              />
 
-          </DialogContent>
-        </Dialog>
-      </React.Fragment>
-    )
+            </DialogContent>
+          </Dialog>
+        </React.Fragment>
+       }
+      </Consumer>)
   }
 }
 

@@ -6,6 +6,7 @@ import {
   exercisesArray,
   getExercisesByMuscles
 } from "./store"
+import {Provider} from '../context'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -34,11 +35,11 @@ export default class App extends React.Component {
   }
 
   handleExerciseDelete = id => {
-    this.setState(({exercisesArray}) => (
+    this.setState(({exercisesArray, currentExercise, editMode}) => (
         {
           exercisesArray: exercisesArray.filter(exercise => exercise.id !== id),
-          editMode: false,
-          currentExercise: {},
+          editMode: id === currentExercise.id ? false : editMode,
+          currentExercise: id === currentExercise.id ? {} : currentExercise,
         }
       ),
       () => {
@@ -54,7 +55,7 @@ export default class App extends React.Component {
           currentExercise: state.exercisesArray.find(ex => {
             return ex.id === id
           }),
-          editMode:false
+          editMode: false
         }
       },
       () => {
@@ -64,18 +65,11 @@ export default class App extends React.Component {
   }
 
 
-
-
   handleExerciseCreate = exercise => {
     this.setState(({exercisesArray}) => ({
       exercisesArray: [...exercisesArray, exercise]
     }))
   }
-  // handleExerciseCreate = exercise => {
-  //   this.setState(({exercisesArray}) => ({
-  //     exercisesArray: [...exercisesArray, exercise]
-  //   }))
-  // }
 
   // update specific exercise with new one
   handleExerciseEdit = exercise => {
@@ -100,12 +94,18 @@ export default class App extends React.Component {
     )
   }
 
+  getContext = () => ({
+    musclesList,
+  ...this.state
+
+  })
+
   render() {
     const {category, exercisesArray, currentExercise, editMode} = this.state
     const allExercises = getExercisesByMuscles(exercisesArray)
 
     return (
-      <div>
+      <Provider value={this.getContext()}>
         <Header
           onExerciseCreate={this.handleExerciseCreate}
           musclesList={musclesList}
@@ -127,7 +127,7 @@ export default class App extends React.Component {
           handleCategorySelect={this.handleCategorySelect}
           category={category}
         />
-      </div>
+      </Provider>
     )
   }
 }

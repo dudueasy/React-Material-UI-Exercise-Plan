@@ -2,15 +2,18 @@ import React from "react"
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
 import Paper from "@material-ui/core/Paper"
+import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
 
-export default class Footer extends React.Component {
+
+export default withWidth()(
+class Footer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
   }
 
   render() {
-    const category = this.props.category
+    const { category,width  }= this.props
 
     console.log(
       "message from Footer.js for musclesList",
@@ -31,15 +34,16 @@ export default class Footer extends React.Component {
           }}
           indicatorColor="primary"
           textColor="primary"
-          centered
+          centered={width !== 'xs'}
+          scrollable={width === 'xs'}
         >
-          <Tab label="All" />
+          <Tab label="All"/>
           {this.props.musclesList.map((muscle, i) => (
-            <Tab label={muscle} key={muscle} />
+            <Tab label={muscle} key={muscle}/>
           ))}
         </Tabs>
       </Paper>
     )
   }
 }
-
+)

@@ -9,7 +9,6 @@ module.exports = {
     // 使用 path.join 来获得绝对路径
     app: path.join(__dirname, './src/index.js')
   },
-  mode: "development",
   resolve: {
     extensions: ['.js', '.jsx']
   },

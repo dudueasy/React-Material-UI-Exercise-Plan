@@ -25,7 +25,7 @@ function ButtonAppBar(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="static">
+      <AppBar position="relative">
         <Toolbar>
           <Typography
             variant="headline"

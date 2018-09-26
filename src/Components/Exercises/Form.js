@@ -7,18 +7,8 @@ import MenuItem from "@material-ui/core/MenuItem"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 
-import {withStyles} from "@material-ui/core/styles"
 
-const styles = theme => ({
-  FormControl: {
-    width: 500
-  },
-  Select: {
-    width: 300
-  }
-})
-
-export default withStyles(styles)(class Form extends React.Component {
+export default class Form extends React.Component {
 
   state = this.getInitialState()
 
@@ -37,7 +27,7 @@ export default withStyles(styles)(class Form extends React.Component {
   }
 
 
-  // create a exercise, pass a specificExercise obj.
+  // create a exercise, passing a newExercise obj.
   handleSubmit = () => {
 
     // create a exercise Object for onCreate()
@@ -45,9 +35,6 @@ export default withStyles(styles)(class Form extends React.Component {
       id: this.state.title.toLowerCase().replace(/ /g, "-"),
       ...this.state,
     })
-
-    // clean current form data  &&  close <Dialog>
-    this.setState(this.getInitialState())
   }
 
   // handleChange function receive an Event as parameter
@@ -66,23 +53,24 @@ export default withStyles(styles)(class Form extends React.Component {
 
   render() {
     const {title, muscles, description} = this.state
-    const {classes, musclesList} = this.props
+    const {classes, musclesList, width} = this.props
     console.log('musclesList:', musclesList)
 
 
     return (
 
-      <form>
+      <form
+      >
         <TextField
           label="Title"
           value={title}
           name={"title"}
           onChange={this.handleChange}
           margin="normal"
-          className={classes.FormControl}
+          fullWidth
         />
         <br/>
-        <FormControl className={classes.FormControl}>
+        <FormControl fullWidth={true}>
           <InputLabel htmlFor="age-simple">Muscles</InputLabel>
           <Select
             value={muscles}
@@ -94,7 +82,8 @@ export default withStyles(styles)(class Form extends React.Component {
           >
 
             {musclesList.map(muscle => (
-              <MenuItem value={muscle} key={muscle}>
+              <MenuItem
+                value={muscle} key={muscle}>
                 {muscle}
               </MenuItem>
             ))}
@@ -111,15 +100,17 @@ export default withStyles(styles)(class Form extends React.Component {
           value={description}
           onChange={this.handleChange}
           margin="normal"
-          className={classes.FormControl}
         />
         <br/>
 
-        <Button color="primary" onClick={this.handleSubmit}>
+        <Button color="primary"
+                onClick={this.handleSubmit}
+                disabled={!title || !muscles}
+        >
           {this.props.currentExercise ? 'Edit' : 'Create'}
         </Button>
       </form>
     )
 
   }
-})
+}
