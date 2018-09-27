@@ -1,13 +1,11 @@
 import React from "react"
-import Tabs from "@material-ui/core/Tabs"
-import Tab from "@material-ui/core/Tab"
-import Paper from "@material-ui/core/Paper"
-import withWidth, {isWidthUp} from '@material-ui/core/withWidth';
+import {Tabs, Tab, Paper} from "@material-ui/core"
+import {withWidth} from "@material-ui/core";
 import {withContext} from "../../context"
 
 
 @withContext
-@withWidth
+@withWidth()
 class Footer extends React.Component {
   constructor(props) {
     super(props)

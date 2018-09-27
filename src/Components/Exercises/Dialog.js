@@ -1,10 +1,14 @@
 import React from "react"
-import Button from "@material-ui/core/Button"
-import Dialog from "@material-ui/core/Dialog"
-import DialogContent from "@material-ui/core/DialogContent"
-import DialogContentText from "@material-ui/core/DialogContentText"
-import DialogTitle from "@material-ui/core/DialogTitle"
-import AddIcon from "@material-ui/icons/Add"
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@material-ui/core"
+
+import AddIcon from '@material-ui/icons/Add'
+
 
 import Form from './Form'
 import {withContext} from '../../context'

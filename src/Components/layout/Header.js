@@ -1,10 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { withStyles } from "@material-ui/core/styles"
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
-import Typography from "@material-ui/core/Typography"
-import CssBaseline from "@material-ui/core/CssBaseline"
+import {
+  withStyles, AppBar, Toolbar, Typography, CssBaseline
+}
+  from "@material-ui/core"
 
 import CreateDialog from "../Exercises/Dialog"
 
@@ -23,10 +22,10 @@ const styles = {
 
 
 function ButtonAppBar(props) {
-  const { classes } = props
+  const {classes} = props
   return (
     <div className={classes.root}>
-      <CssBaseline />
+      <CssBaseline/>
       <AppBar position="relative">
         <Toolbar>
           <Typography
@@ -36,7 +35,7 @@ function ButtonAppBar(props) {
           >
             Exercise
           </Typography>
-          <CreateDialog />
+          <CreateDialog/>
         </Toolbar>
       </AppBar>
     </div>
