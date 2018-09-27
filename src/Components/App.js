@@ -114,8 +114,6 @@ export default class App extends React.Component {
   })
 
   render() {
-    // const {category, exercisesArray, currentExercise, editMode} = this.state
-    // const allExercises = getExercisesByMuscles(exercisesArray)
 
     return (
       <Provider value={this.getContext()}>
