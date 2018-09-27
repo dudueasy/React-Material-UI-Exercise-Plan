@@ -1,5 +1,4 @@
 import React from 'react'
-
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 import InputLabel from "@material-ui/core/InputLabel"
@@ -7,13 +6,15 @@ import MenuItem from "@material-ui/core/MenuItem"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 
+import {withContext} from "../../context"
 
-export default class Form extends React.Component {
+
+class Form extends React.Component {
 
   state = this.getInitialState()
 
   getInitialState() {
-    const {currentExercise} = this.props
+    const {currentExercise } = this.props
 
     return currentExercise
       ? currentExercise
@@ -32,8 +33,8 @@ export default class Form extends React.Component {
 
     // create a exercise Object for onCreate()
     this.props.onSubmit({
-      id: this.state.title.toLowerCase().replace(/ /g, "-"),
       ...this.state,
+      id: this.state.title.toLowerCase().replace(/ /g, "-"),
     })
   }
 
@@ -59,8 +60,7 @@ export default class Form extends React.Component {
 
     return (
 
-      <form
-      >
+      <form>
         <TextField
           label="Title"
           value={title}
@@ -111,6 +111,7 @@ export default class Form extends React.Component {
         </Button>
       </form>
     )
-
   }
 }
+
+export default withContext(Form)

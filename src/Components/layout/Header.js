@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import CssBaseline from "@material-ui/core/CssBaseline"
+
 import CreateDialog from "../Exercises/Dialog"
 
 const styles = {
@@ -21,7 +22,7 @@ const styles = {
 }
 
 function ButtonAppBar(props) {
-  const { classes, onExerciseCreate,musclesList } = props
+  const { classes } = props
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -34,10 +35,7 @@ function ButtonAppBar(props) {
           >
             Exercise
           </Typography>
-          <CreateDialog
-            onCreate={onExerciseCreate}
-            musclesList={musclesList}
-          />
+          <CreateDialog />
         </Toolbar>
       </AppBar>
     </div>

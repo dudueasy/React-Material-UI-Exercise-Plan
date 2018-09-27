@@ -66,14 +66,20 @@ export default class App extends React.Component {
 
 
   handleExerciseCreate = exercise => {
+    console.log('newExercise  :', exercise)
+
     this.setState(({exercisesArray}) => ({
+      currentExercise: exercise,
       exercisesArray: [...exercisesArray, exercise]
     }))
   }
 
   // update specific exercise with new one
   handleExerciseEdit = exercise => {
+    console.log('newExercise  :', exercise)
+
     this.setState(({exercisesArray}) => ({
+      currentExercise: exercise,
       editMode: !this.state.editMode,
       exercisesArray: [... exercisesArray.filter((ex) => {
         return ex.id !== exercise.id
@@ -82,6 +88,7 @@ export default class App extends React.Component {
     }))
   }
 
+  // open a editable form
   handleExerciseSelectEdit = id => {
     this.setState(({exercisesArray}) => (
         {
@@ -96,37 +103,27 @@ export default class App extends React.Component {
 
   getContext = () => ({
     musclesList,
-  ...this.state
-
+    ...this.state,
+    onCreate: this.handleExerciseCreate,
+    onCategorySelect: this.handleCategorySelect,
+    onDelete: this.handleExerciseDelete,
+    onExerciseSelect: this.handleExerciseSelect,
+    onExerciseEdit: this.handleExerciseEdit,
+    onExerciseSelectEdit: this.handleExerciseSelectEdit,
+    allExercises: getExercisesByMuscles(this.state.exercisesArray)
   })
 
   render() {
-    const {category, exercisesArray, currentExercise, editMode} = this.state
-    const allExercises = getExercisesByMuscles(exercisesArray)
+    // const {category, exercisesArray, currentExercise, editMode} = this.state
+    // const allExercises = getExercisesByMuscles(exercisesArray)
 
     return (
       <Provider value={this.getContext()}>
-        <Header
-          onExerciseCreate={this.handleExerciseCreate}
-          musclesList={musclesList}
-        />
-        <Exercises
-          currentExercise={currentExercise}
-          category={category}
-          musclesList={musclesList}
-          allExercises={allExercises}
-          handleExerciseSelect={this.handleExerciseSelect}
-          onDelete={this.handleExerciseDelete}
-          onSelectEdit={this.handleExerciseSelectEdit}
-          editMode={editMode}
-          onEdit={this.handleExerciseEdit}
-        />
+        <Header/>
 
-        <Footer
-          musclesList={musclesList}
-          handleCategorySelect={this.handleCategorySelect}
-          category={category}
-        />
+        <Exercises/>
+
+        <Footer/>
       </Provider>
     )
   }

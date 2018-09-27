@@ -14,6 +14,7 @@ import {
 import {Edit, Delete} from '@material-ui/icons/';
 import {withStyles} from "@material-ui/core/styles"
 
+import {withContext} from '../../context'
 import Form from './Form'
 
 const styles = theme => ({
@@ -59,23 +60,24 @@ const styles = theme => ({
   }
 )
 
-export default withStyles(styles)(({
-                                     classes,
-                                     allExercises,
-                                     category,
-                                     musclesList,
-                                     handleExerciseSelect,
-                                     currentExercise,
-                                     currentExercise: {
-                                       id,
-                                       title = "welcome",
-                                       description = " please select an exercise from the list on the left"
-                                     },
-                                     onDelete,
-                                     onSelectEdit,
-                                     editMode,
-                                     onEdit
-                                   }) => (
+const Exercise = ({
+                    classes,
+                    allExercises,
+                    category,
+                    musclesList,
+                    onExerciseSelect,
+                    currentExercise,
+                    currentExercise: {
+                      id,
+                      title = "welcome",
+                      description = " please select an exercise from the list on the left"
+                    },
+                    onDelete,
+                    onExerciseSelectEdit,
+                    editMode,
+                    onExerciseEdit
+                  }) => (
+
   <React.Fragment>
     <Grid container className={classes.container}>
       <Grid item xs={12} sm={5} className={classes.item}>
@@ -98,13 +100,14 @@ export default withStyles(styles)(({
                         <ListItem
                           button
                           onClick={() => {
-                            handleExerciseSelect(id)
+                            onExerciseSelect(id)
                           }}
                           key={id}
                         >
                           <ListItemText primary={title}/>
                           <ListItemSecondaryAction>
-                            <IconButton onClick={() => onSelectEdit(id)}>
+                            <IconButton onClick={() =>
+                             onExerciseSelectEdit(id)}>
                               <Edit/>
                             </IconButton>
                             <IconButton onClick={() => onDelete(id)}>
@@ -130,10 +133,11 @@ export default withStyles(styles)(({
           </Typography>
           {editMode
             ? <Form
-              onSubmit={onEdit}
+              onSubmit={onExerciseEdit}
               musclesList={musclesList}
               currentExercise={currentExercise}
               key={id}
+              createMode={false}
             >
             </Form>
             :
@@ -145,4 +149,6 @@ export default withStyles(styles)(({
       </Grid>
     </Grid>
   </React.Fragment>
-))
+)
+
+export default withContext(withStyles(styles)(Exercise))
