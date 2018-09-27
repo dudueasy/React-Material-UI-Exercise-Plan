@@ -9,7 +9,7 @@ import AddIcon from "@material-ui/icons/Add"
 import Form from './Form'
 import {withContext} from '../../context'
 
-
+@withContext
 class CreateDialog extends React.Component {
   state = {
     open: false,
@@ -62,4 +62,4 @@ class CreateDialog extends React.Component {
   }
 }
 
-export default withContext(CreateDialog)
+export default CreateDialog

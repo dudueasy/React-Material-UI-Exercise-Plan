@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button"
 import {withContext} from "../../context"
 
 
+@withContext
 class Form extends React.Component {
 
   state = this.getInitialState()
@@ -114,4 +115,4 @@ class Form extends React.Component {
   }
 }
 
-export default withContext(Form)
+export default Form
