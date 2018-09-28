@@ -59,7 +59,9 @@ class Form extends React.Component {
 
     return (
 
-      <form  onsubmit="return false" >
+      <form onSubmit={() => {
+        return false
+      }}>
         <TextField
           label="Title"
           value={title}

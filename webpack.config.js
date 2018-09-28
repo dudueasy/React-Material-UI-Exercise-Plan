@@ -49,7 +49,7 @@ module.exports = {
       errors: true
     },
   },
-  devtool: 'cheap-source-map',
+  devtool: "cheap-module-eval-source-map",
   plugins: [
     new HTMLPlugin({
       filename: 'index.html',
