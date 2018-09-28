@@ -10,7 +10,10 @@ module.exports = {
     app: path.join(__dirname, './src/index.js')
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      '@material-ui/core': '@material-ui/core/es'
+    }
   },
   output: {
     // 定义输出文件名, 这里使用 webpack 变量, [name] 是入口名, 此处对应 app, [hash]是打包完成的文件的哈希值, 用于和浏览器缓存协作.
