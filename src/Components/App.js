@@ -58,10 +58,7 @@ export default class App extends React.Component {
   }
 
 
-  handleExerciseCreate = newExercise => {
-    console.log('newExercise  :', newExercise)
-    newExercise.id = newExercise.newId
-    delete newExercise.newId
+  handleExerciseCreate = newExercise => originalId => {
 
     this.setState(({exercisesArray}) => ({
       currentExercise: newExercise,
@@ -71,17 +68,12 @@ export default class App extends React.Component {
 
 
   // update specific exercise with new one
-  handleExerciseEdit = modifiedExercise => {
-    let originalExerciseId = modifiedExercise.id
-
-    modifiedExercise.id = modifiedExercise.newId
-    delete modifiedExercise.newId
-
+  handleExerciseEdit = modifiedExercise => originalId => {
 
     this.setState(({exercisesArray}) => ({
       editMode: !this.state.editMode,
       exercisesArray: [...exercisesArray.filter((ex) => {
-        return ex.id !== originalExerciseId
+        return ex.id !== originalId
       }), modifiedExercise],
 
       currentExercise: modifiedExercise,

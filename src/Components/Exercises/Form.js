@@ -29,12 +29,13 @@ class Form extends React.Component {
 
   // create a exercise, passing a newExercise obj.
   handleSubmit = () => {
+    originalId = this.state.id || ''
 
     // create a exercise Object for onCreate()
     this.props.onSubmit({
       ...this.state,
-      newId: this.state.title.toLowerCase().replace(/ /g, "-"),
-    })
+      id: this.state.title.toLowerCase().replace(/ /g, "-"),
+    }, originalId)
   }
 
   // handleChange function receive an Event as parameter
