@@ -37,12 +37,10 @@ module.exports = {
         test: /\.js$/,
         use: 'babel-loader',
         // 排除 node_modules 目录
-        exclude: [
-          path.join(__dirname, './node_modules')
-        ]
-      }
-    ]
-  },
+        exclude:'/node_modules/'
+      }]
+  }   
+  ,
   devServer: {
     host: '0.0.0.0',
     port: '8888',
@@ -52,7 +50,7 @@ module.exports = {
       errors: true
     },
   },
-  devtool: "cheap-module-eval-source-map",
+  devtool: "cheap-module-source-map",
   plugins: [
     new HTMLPlugin({
       filename: 'index.html',
