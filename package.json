@@ -4,9 +4,12 @@
   "description": "A React Project Built with Material UI",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development ",
-    "build": "rm -rf dist && webpack --mode production --progress",
-    "analyze": "webpack --json > stats.json  && webpack-bundle-analyzer stats.json dist"
+    "client:start": "webpack-dev-server --config ./build/webpack.client.config.js --mode development ",
+    "client:build": "webpack --config ./build/webpack.client.config.js --progress",
+    "server:build": "webpack --config ./build/webpack.server.config.js --progress",
+    "server:start": "nodemon server.js",
+    "analyze": "webpack  --config ./build/webpack.client.config.js --json > stats.json  && webpack-bundle-analyzer stats.json dist",
+    "build": "rm -rf dist/* && npm run client:build && npm run server:build"
   },
   "sideEffects": false,
   "author": "",
@@ -24,7 +27,10 @@
     "webpack": "^4.19.1",
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8"
+    "webpack-dev-server": "^3.1.8",
+    "webpack-merge": "^4.1.4",
+    "nodemon": "^1.18.4",
+    "express": "^4.16.3"
   },
   "dependencies": {
     "@material-ui/core": "^3.1.1",

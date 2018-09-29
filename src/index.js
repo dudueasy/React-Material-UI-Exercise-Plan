@@ -35,7 +35,7 @@ if(module.hot) {
 }
 
 const rootElement = document.getElementById("root")
-ReactDOM.render(<Main />, rootElement)
+ReactDOM.hydrate(<Main />, rootElement)
 
 
 
