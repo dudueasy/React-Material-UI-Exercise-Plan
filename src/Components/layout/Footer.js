@@ -1,6 +1,5 @@
 import React from "react"
-import {Tabs, Tab, Paper} from "@material-ui/core"
-import {withWidth} from "@material-ui/core";
+import {withWidth,Tabs, Tab, Paper} from "@material-ui/core"
 import {withContext} from "../../context"
 
 
@@ -22,21 +21,21 @@ class Footer extends React.Component {
 
     return (
       <Paper>
-        <Tabs
-          value={selectedCategoryIndex}
-          onChange={(e, index) => {
-            this.props.onCategorySelect(e, index)
-          }}
-          indicatorColor="primary"
-          textColor="primary"
-          centered={width !== 'xs'}
-          scrollable={width === 'xs'}
-        >
-          <Tab label="All"/>
-          {this.props.musclesList.map((muscle, i) => (
-            <Tab label={muscle} key={muscle}/>
-          ))}
-        </Tabs>
+      <Tabs
+      value={selectedCategoryIndex}
+      onChange={(e, index) => {
+        this.props.onCategorySelect(e, index)
+      }}
+      indicatorColor="primary"
+      textColor="primary"
+      centered={width !== 'xs'}
+      scrollable={width === 'xs'}
+      >
+      <Tab label="All"/>
+      {this.props.musclesList.map((muscle, i) => (
+        <Tab label={muscle} key={muscle}/>
+      ))}
+      </Tabs>
       </Paper>
     )
   }

@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import {
   AppBar, Toolbar, Typography, CssBaseline
 }
@@ -16,10 +15,6 @@ const styles = {
   flex: {
     flex: 1
   },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
-  }
 }
 
 
@@ -44,8 +39,5 @@ function ButtonAppBar(props) {
   )
 }
 
-ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired
-}
 
 export default withStyles(styles)(ButtonAppBar)

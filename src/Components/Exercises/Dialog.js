@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@material-ui/core"
 
-import AddIcon from '@material-ui/icons/Add'
+import { Add } from "@material-ui/icons"
 
 
 import Form from './Form'
@@ -34,33 +34,33 @@ class CreateDialog extends React.Component {
 
     return (
       <React.Fragment>
-        <Button
-          onClick={this.handleClickToggle}
-          variant="fab"
-          color="secondary"
-          aria-label="add"
-          mini
-        >
-          <AddIcon/>
-        </Button>
+      <Button
+      onClick={this.handleClickToggle}
+      variant="fab"
+      color="secondary"
+      aria-label="add"
+      mini
+      >
+      <Add/>
+      </Button>
 
-        <Dialog
-          open={open}
-          onClose={this.handleClickToggle}
-          aria-labelledby="form-dialog-title"
-          fullWidth={true}
-          maxWidth='sm'
-        >
-          <DialogTitle id="form-dialog-title">Create an exercise</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Please fill out the form below
-            </DialogContentText>
+      <Dialog
+      open={open}
+      onClose={this.handleClickToggle}
+      aria-labelledby="form-dialog-title"
+      fullWidth={true}
+      maxWidth='sm'
+      >
+      <DialogTitle id="form-dialog-title">Create an exercise</DialogTitle>
+      <DialogContent>
+      <DialogContentText>
+      Please fill out the form below
+      </DialogContentText>
 
-            <Form onSubmit={this.handleFormSubmit} currentExercise={null}/>
+      <Form onSubmit={this.handleFormSubmit} currentExercise={null}/>
 
-          </DialogContent>
-        </Dialog>
+      </DialogContent>
+      </Dialog>
       </React.Fragment>
     )
   }
