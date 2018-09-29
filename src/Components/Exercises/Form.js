@@ -33,7 +33,7 @@ class Form extends React.Component {
     // create a exercise Object for onCreate()
     this.props.onSubmit({
       ...this.state,
-      id: this.state.title.toLowerCase().replace(/ /g, "-"),
+      newId: this.state.title.toLowerCase().replace(/ /g, "-"),
     })
   }
 

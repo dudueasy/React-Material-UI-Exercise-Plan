@@ -27,13 +27,6 @@ export default class App extends React.Component {
   }
 
 
-  // take a specificExercise as parameter, insert this specificExercise into  exercisesArray
-  handleExerciseCreate = exercise => {
-    this.setState(({exercisesArray}) => ({
-      exercisesArray: [...exercisesArray, exercise]
-    }))
-  }
-
   handleExerciseDelete = id => {
     this.setState(({exercisesArray, currentExercise, editMode}) => (
         {
@@ -65,31 +58,38 @@ export default class App extends React.Component {
   }
 
 
-  handleExerciseCreate = exercise => {
-    console.log('newExercise  :', exercise)
+  handleExerciseCreate = newExercise => {
+    console.log('newExercise  :', newExercise)
+    newExercise.id = newExercise.newId
+    delete newExercise.newId
 
     this.setState(({exercisesArray}) => ({
-      currentExercise: exercise,
-      exercisesArray: [...exercisesArray, exercise]
+      currentExercise: newExercise,
+      exercisesArray: [...exercisesArray, newExercise]
     }))
   }
+
 
   // update specific exercise with new one
-  handleExerciseEdit = exercise => {
-    console.log('newExercise  :', exercise)
+  handleExerciseEdit = modifiedExercise => {
+    let originalExerciseId = modifiedExercise.id
+
+    modifiedExercise.id = modifiedExercise.newId
+    delete modifiedExercise.newId
+
 
     this.setState(({exercisesArray}) => ({
-      currentExercise: exercise,
       editMode: !this.state.editMode,
-      exercisesArray: [... exercisesArray.filter((ex) => {
-        return ex.id !== exercise.id
-      }), exercise],
-      exercise
+      exercisesArray: [...exercisesArray.filter((ex) => {
+        return ex.id !== originalExerciseId
+      }), modifiedExercise],
+
+      currentExercise: modifiedExercise,
     }))
   }
 
-  // open a editable form
-  handleExerciseSelectEdit = id => {
+  // handle click on edit button, open a editable form
+  handleExerciseSelectEditClick = id => {
     this.setState(({exercisesArray}) => (
         {
           editMode: true,
@@ -109,7 +109,7 @@ export default class App extends React.Component {
     onDelete: this.handleExerciseDelete,
     onExerciseSelect: this.handleExerciseSelect,
     onExerciseEdit: this.handleExerciseEdit,
-    onExerciseSelectEdit: this.handleExerciseSelectEdit,
+    onExerciseSelectEdit: this.handleExerciseSelectEditClick,
     allExercises: getExercisesByMuscles(this.state.exercisesArray)
   })
 
