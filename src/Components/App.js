@@ -68,7 +68,7 @@ export default class App extends React.Component {
 
 
   // update specific exercise with new one
-  handleExerciseEdit = modifiedExercise => originalId => {
+  handleExerciseEdit = (modifiedExercise, originalId) => {
 
     this.setState(({exercisesArray}) => ({
       editMode: !this.state.editMode,
