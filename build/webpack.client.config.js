@@ -28,7 +28,6 @@ let clientConfig = {
       errors: true
     },
   },
-  devtool: "cheap-module-source-map",
   plugins: [
     new HTMLPlugin({
       filename: 'index.html',

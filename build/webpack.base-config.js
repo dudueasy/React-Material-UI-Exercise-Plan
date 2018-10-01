@@ -3,7 +3,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-
+  devtool: "cheap-module-source-map",
   module: {
     rules: [
       // 定义编译 jsx 文件使用的loader(babel-loader)
@@ -16,7 +16,7 @@ module.exports = {
         test: /\.js$/,
         use: 'babel-loader',
         // 排除 node_modules 目录
-        exclude:'/node_modules/'
+        exclude: '/node_modules/'
       }]
   }
 }
