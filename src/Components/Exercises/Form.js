@@ -38,9 +38,16 @@ class Form extends React.Component {
     }, originalId)
   }
 
+  handleKeyDown = (e = {keyCode}) => {
+    if (e.keyCode === 13) {
+      e.preventDefault()
+    }
+  }
+
   // handleChange function receive an Event as parameter
-  handleChange = ({target: {name, value}}) => {
+  handleChange = ({nativeEvent, target: {name, value}}) => {
     console.log("handleChange triggered")
+
     this.setState(
       {[name]: value},
       () => {
@@ -70,6 +77,7 @@ class Form extends React.Component {
           onChange={this.handleChange}
           margin="normal"
           fullWidth
+          onKeyDown={this.handleKeyDown}
         />
         <br/>
         <FormControl fullWidth={true}>
