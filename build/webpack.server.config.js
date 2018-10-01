@@ -17,8 +17,6 @@ const serverConfig = {
         "commonjs2",
       path:
         path.join(__dirname, "../dist"),
-      publicPath:
-        '/public/',
     }
   ,
 }

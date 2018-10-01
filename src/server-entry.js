@@ -11,13 +11,20 @@ import {
 
 
 // process to build a MUI App for SSR
+
+
+const sheetsRegistry = new SheetsRegistry();
+
 // Create a sheetsManager instance.
 const sheetsManager = new Map();
 
 // Create a theme instance.
+
 const theme = createMuiTheme({
   palette: {
-    primary: {},
+    primary: {
+      main: '#e53935',
+    },
     secondary: {
       main: '#3f51b5',
     },
@@ -35,6 +42,5 @@ const MUIApp = (
   </JssProvider>
 )
 
-export default App
-export {MUIApp}
+export default MUIApp
 

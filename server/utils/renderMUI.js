@@ -6,12 +6,12 @@ const path = require('path')
 const {SheetsRegistry} = require('react-jss/lib/jss')
 
 
-const App = require('../../dist/server-entry').MUIApp
+const App = require('../../dist/server-entry').default
 
 
 function renderFullPage(html, css) {
   const template = fs.readFileSync(path.join(__dirname, '../../dist/index.html'), 'utf-8')
-  HTMLWithMarkUp = template.replace('<app></app>', html)
+  let HTMLWithMarkUp = template.replace('<app></app>', html)
   HTMLWithMarkUp = template.replace('<css></css>', css)
   return HTMLWithMarkUp
 }
