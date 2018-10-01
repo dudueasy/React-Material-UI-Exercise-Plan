@@ -2,10 +2,10 @@
   "name": "react_material_ui_project",
   "version": "1.0.0",
   "description": "A React Project Built with Material UI",
-  "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development ",
-    "build": "rm -rf dist && webpack --mode production --progress",
+    "dev:start":"webpack-dev-server --mode development",
+    "start": "webpack --mode development --watch & nodemon ./dist/server.js",
+    "build": "webpack --mode production --progress",
     "analyze": "webpack --json > stats.json  && webpack-bundle-analyzer stats.json dist"
   },
   "sideEffects": false,
@@ -24,11 +24,13 @@
     "webpack": "^4.19.1",
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8"
+    "webpack-dev-server": "^3.1.8",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "@material-ui/core": "^3.1.1",
     "@material-ui/icons": "^3.0.1",
+    "Express": "^3.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
