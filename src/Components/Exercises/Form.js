@@ -29,7 +29,7 @@ class Form extends React.Component {
 
   // create a exercise, passing a newExercise obj.
   handleSubmit = () => {
-    originalId = this.state.id || ''
+    const originalId = this.state.id || ''
 
     // create a exercise Object for onCreate()
     this.props.onSubmit({
