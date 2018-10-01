@@ -17,7 +17,7 @@ template: ```/src/template.html```
 
 common root Component: ```/src/Component/App```
 
-store: ```store.js```
+store: ```src/Components/store.js```
 
 # run & build
 * build
