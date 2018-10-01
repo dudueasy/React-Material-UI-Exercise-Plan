@@ -58,7 +58,7 @@ export default class App extends React.Component {
   }
 
 
-  handleExerciseCreate = newExercise => originalId => {
+  handleExerciseCreate = (newExercise ,originalId) => {
 
     this.setState(({exercisesArray}) => ({
       currentExercise: newExercise,
