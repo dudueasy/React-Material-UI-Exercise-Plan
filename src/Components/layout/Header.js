@@ -30,7 +30,7 @@ function ButtonAppBar(props) {
             color="inherit"
             className={classes.flex}
           >
-            Exercise
+           Traineer
           </Typography>
           <CreateDialog/>
         </Toolbar>

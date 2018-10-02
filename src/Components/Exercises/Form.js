@@ -117,7 +117,7 @@ class Form extends React.Component {
                 onClick={this.handleSubmit}
                 disabled={!title || !muscles}
         >
-          {this.props.currentExercise ? 'Edit' : 'Create'}
+          {this.props.currentExercise ? 'Confirm' : 'Create'}
         </Button>
       </form>
     )
