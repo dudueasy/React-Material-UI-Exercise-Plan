@@ -16,7 +16,8 @@ export default class App extends React.Component {
       exercisesArray: exercisesArray,
       currentExercise: {},
       category: "",
-      editMode: false
+      editMode: false,
+      mobileContentOpen: false
     }
   }
 
@@ -48,13 +49,23 @@ export default class App extends React.Component {
           currentExercise: state.exercisesArray.find(ex => {
             return ex.id === id
           }),
-          editMode: false
+          editMode: false,
+          mobileContentOpen: !this.state.mobileContentOpen
         }
       },
       () => {
         console.log("component get updated")
+        console.log("mobileContentOpen open:", this.state.mobileContentOpen)
       }
     )
+  }
+
+  toggleMobileContentOpen = () => {
+    this.setState({
+      mobileContentOpen: !this.state.mobileContentOpen
+    }, () => {
+      console.log('mobileContentOpen:', this.state.mobileContentOpen)
+    })
   }
 
 
@@ -66,6 +77,10 @@ export default class App extends React.Component {
     }))
   }
 
+
+  enterEditMode = () => {
+    this.setState({editMode: !this.state.editMode})
+  }
 
   // update specific exercise with new one
   handleExerciseEdit = (modifiedExercise, originalId) => {
@@ -85,6 +100,7 @@ export default class App extends React.Component {
     this.setState(({exercisesArray}) => (
         {
           editMode: true,
+          mobileContentOpen: true,
           currentExercise: exercisesArray.find(ex => {
             return ex.id === id
           })
@@ -102,7 +118,9 @@ export default class App extends React.Component {
     onExerciseSelect: this.handleExerciseSelect,
     onExerciseEdit: this.handleExerciseEdit,
     onExerciseSelectEdit: this.handleExerciseSelectEditClick,
-    allExercises: getExercisesByMuscles(this.state.exercisesArray)
+    allExercises: getExercisesByMuscles(this.state.exercisesArray),
+    toggleMobileContentOpen: this.toggleMobileContentOpen,
+    enterEditMode: this.enterEditMode
   })
 
   render() {

@@ -30,7 +30,6 @@ class CreateDialog extends React.Component {
 
   render() {
     const {open} = this.state
-    const {musclesList} = this.props
 
     return (
       <React.Fragment>
@@ -49,7 +48,7 @@ class CreateDialog extends React.Component {
       onClose={this.handleClickToggle}
       aria-labelledby="form-dialog-title"
       fullWidth={true}
-      maxWidth='sm'
+      maxWidth='xs'
       >
       <DialogTitle id="form-dialog-title">Create an exercise</DialogTitle>
       <DialogContent>
