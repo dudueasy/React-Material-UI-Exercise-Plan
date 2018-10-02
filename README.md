@@ -1,6 +1,8 @@
 # React with SSR
 feature: A SSR Material UI App
 
+# Enviorment Setting
+Through npm package: ```dotenv```  & config file: ```/.env```
 
 # file structure
 webpack configuration for client & server bundle: ```/build/*```
