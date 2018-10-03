@@ -57,18 +57,12 @@ class Content extends React.Component {
             createMode={false}
           />
           : id ? <Fragment>
-              <CardHeader title={title} />
+              <CardHeader title={title} subheader={muscles}/>
               <CardContent>
-                <Typography color="textSecondary">
-                  Muscles
-                </Typography>
-                <Typography variant="headline" component="h2" gutterBottom>
-                  {muscles}
-                </Typography>
                 <Typography color="textSecondary">
                   Description
                 </Typography>
-                <Typography component="p">
+                <Typography component="body2">
                   {description}
                 </Typography>
                 <Button color="primary" onClick={enterEditMode} style={{marginTop: 10}}>
