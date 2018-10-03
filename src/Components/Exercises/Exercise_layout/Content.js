@@ -1,7 +1,9 @@
 import React, {Fragment} from 'react'
 import {
   Typography,
-  Button
+  Button,
+  CardHeader,
+  CardContent,
 } from "@material-ui/core"
 
 import {withStyles} from "@material-ui/core/styles"
@@ -47,43 +49,37 @@ class Content extends React.Component {
 
         {editMode
           ?
-          <Form
-            onSubmit={onExerciseEdit}
-            musclesList={musclesList}
-            currentExercise={currentExercise}
-            key={id}
-            createMode={false}
-          />
+          <CardContent>
+            <Form
+              onSubmit={onExerciseEdit}
+              musclesList={musclesList}
+              currentExercise={currentExercise}
+              key={id}
+              createMode={false}
+            />
+          </CardContent>
           : id ? <Fragment>
-              <Typography variant="headline" component="h2" gutterBottom>
-                {title}
-              </Typography>
-              <Typography color="textSecondary">
-                Muscles
-              </Typography>
-              <Typography variant="headline" component="h2" gutterBottom>
-                {muscles}
-              </Typography>
-              <Typography color="textSecondary">
-                description
-              </Typography>
-              <Typography component="p">
-                {description}
-              </Typography>
-              <Button color="primary" onClick={enterEditMode} style={{marginTop:10}}>
-                Edit
-              </Button>
+              <CardHeader title={title} subheader={muscles}/>
+              <CardContent>
+                <Typography component="body2">
+                  {description}
+                </Typography>
+                <Button color="primary" onClick={enterEditMode} style={{marginTop: 10}}>
+                  Edit
+                </Button>
+              </CardContent>
             </Fragment>
             :
 
             ( <Fragment>
-                <Typography variant="headline" component="h2" gutterBottom>
-                  {title}
-                </Typography>
+                <CardHeader title={title} subheader={muscles}>
+                </CardHeader>
+                <CardContent>
 
-                <Typography  component="p" gutterBottom>
-                  {description}
-                </Typography>
+                  <Typography component="p" gutterBottom>
+                    {description}
+                  </Typography>
+                </CardContent>
               </Fragment>
             )
 
