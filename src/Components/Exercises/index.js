@@ -4,6 +4,7 @@ import {
   Paper,
   Hidden,
   Dialog,
+  Card,
   DialogContent,
   DialogContentText,
   DialogTitle,
@@ -92,10 +93,9 @@ class Exercise extends React.Component {
               fullWidth={true}
               maxWidth='sm'
             >
-              <DialogContent>
-                <Content/>
-
-              </DialogContent>
+              <Card>
+                  <Content/>
+              </Card>
             </Dialog>
 
 
