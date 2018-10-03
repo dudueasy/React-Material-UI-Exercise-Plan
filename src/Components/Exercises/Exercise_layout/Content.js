@@ -49,19 +49,18 @@ class Content extends React.Component {
 
         {editMode
           ?
-          <Form
-            onSubmit={onExerciseEdit}
-            musclesList={musclesList}
-            currentExercise={currentExercise}
-            key={id}
-            createMode={false}
-          />
+          <CardContent>
+            <Form
+              onSubmit={onExerciseEdit}
+              musclesList={musclesList}
+              currentExercise={currentExercise}
+              key={id}
+              createMode={false}
+            />
+          </CardContent>
           : id ? <Fragment>
               <CardHeader title={title} subheader={muscles}/>
               <CardContent>
-                <Typography color="textSecondary">
-                  Description
-                </Typography>
                 <Typography component="body2">
                   {description}
                 </Typography>
@@ -73,7 +72,7 @@ class Content extends React.Component {
             :
 
             ( <Fragment>
-                <CardHeader title={title}>
+                <CardHeader title={title} subheader={muscles}>
                 </CardHeader>
                 <CardContent>
 
