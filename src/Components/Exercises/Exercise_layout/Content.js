@@ -1,15 +1,15 @@
-import React, {Fragment} from 'react'
+import React, {Fragment} from 'react';
 import {
   Typography,
   Button,
   CardHeader,
   CardContent,
-} from "@material-ui/core"
+} from "@material-ui/core";
 
-import {withStyles} from "@material-ui/core/styles"
+import {withStyles} from "@material-ui/core/styles";
 
-import {withContext} from '../../../context'
-import Form from '../Form'
+import {withContext} from '../../../context';
+import Form from '../Form';
 
 const styles = {
   title: {
@@ -34,15 +34,15 @@ class Content extends React.Component {
         id,
         title = "welcome",
         muscles,
-        description = " please select an exercise from the list on the left"
+        description = " please select an exercise from the list on the left",
       },
       enterEditMode,
       editMode,
       onExerciseEdit,
       currentExercise,
       musclesList,
-      mobileContentOpen
-    } = this.props
+      mobileContentOpen,
+    } = this.props;
 
     return (
       <Fragment>
@@ -61,9 +61,17 @@ class Content extends React.Component {
           : id ? <Fragment>
               <CardHeader title={title} subheader={muscles}/>
               <CardContent>
-                <Typography component="body2">
-                  {description}
-                </Typography>
+                {
+                  (description.split(/\n/)).map((desc, index) => (
+                      desc ?
+                        <Typography variant="body1" key={index}>
+                          {desc}
+                        </Typography>
+                        :
+                        <br/>
+                    ),
+                  )
+                }
                 <Button color="primary" onClick={enterEditMode} style={{marginTop: 10}}>
                   Edit
                 </Button>
@@ -86,8 +94,8 @@ class Content extends React.Component {
         }
 
       </Fragment>
-    )
+    );
   }
 }
 
-export default Content
+export default Content;
