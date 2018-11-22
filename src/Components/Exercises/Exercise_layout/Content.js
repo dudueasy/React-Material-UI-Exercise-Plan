@@ -68,7 +68,7 @@ class Content extends React.Component {
                           {desc}
                         </Typography>
                         :
-                        <br/>
+                        <br key={index}/>
                     ),
                   )
                 }
