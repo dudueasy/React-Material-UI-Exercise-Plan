@@ -23,11 +23,15 @@ const styles = theme => ({
       overflowY: "auto",
       [theme.breakpoints.up('sm')]: {
         marginTop: 5,
-        height: 'calc( 100% - 10px) '
+        height: 'calc( 100% - 10px) ',
+        overflowY:'scroll'
       },
       [theme.breakpoints.down('xs')]: {
         height: '100%'
       }
+    },
+    item:{
+      height:'100%'
     },
     '@global': {
       'html': {
