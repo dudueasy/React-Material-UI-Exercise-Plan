@@ -4,7 +4,7 @@
   "description": "A React Project Built with Material UI",
   "scripts": {
     "dev:start": "webpack-dev-server --mode development",
-    "start": "webpack --mode development --watch & nodemon ./dist/server.js",
+    "start": "webpack --mode development --watch &  nodemon ./dist/server.js",
     "build": "webpack --mode production --progress",
     "analyze": "webpack --json > stats.json  && webpack-bundle-analyzer stats.json dist"
   },
@@ -28,7 +28,7 @@
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8",
     "webpack-node-externals": "^1.7.2",
-    "webpack-merge": "^4.1.4",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "@material-ui/core": "^3.1.1",

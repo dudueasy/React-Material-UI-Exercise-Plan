@@ -45,7 +45,7 @@ const clientConfig = {
   plugins: [
     new HTMLPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, './src/templete.html')
+      template: path.join(__dirname, './src/template.html')
     }),
     new webpack.HotModuleReplacementPlugin()
   ],

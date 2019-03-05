@@ -53,11 +53,6 @@ export default class App extends React.Component {
         }
       },
       () => {
-<<<<<<< HEAD
-        console.log("component get updated")
-        console.log("mobileContentOpen open:", this.state.mobileContentOpen)
-=======
->>>>>>> master
       }
     )
   }
@@ -66,10 +61,6 @@ export default class App extends React.Component {
     this.setState({
       mobileContentOpen: !this.state.mobileContentOpen
     }, () => {
-<<<<<<< HEAD
-      console.log('mobileContentOpen:', this.state.mobileContentOpen)
-=======
->>>>>>> master
     })
   }
 
