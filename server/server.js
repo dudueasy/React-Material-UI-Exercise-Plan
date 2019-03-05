@@ -13,11 +13,10 @@ const app = express()
 
 app.use('/public', express.static(path.join(__dirname, '../dist')));
 
-app.get('*', handleRenderForMUI)
+app.use('*', handleRenderForMUI)
 
 
 app.use((error, req, res, next) => {
-  console.log('An error happen: ', error)
   res.json(error)
 })
 

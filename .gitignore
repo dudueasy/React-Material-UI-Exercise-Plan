@@ -4,3 +4,4 @@ dist/
 package-lock.json
 stats.json
 .env
+yarn.lock

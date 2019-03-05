@@ -37,7 +37,6 @@ export default class App extends React.Component {
         }
       ),
       () => {
-        console.log('exercise is deleted ')
       })
 
   }
@@ -54,8 +53,6 @@ export default class App extends React.Component {
         }
       },
       () => {
-        console.log("component get updated")
-        console.log("mobileContentOpen open:", this.state.mobileContentOpen)
       }
     )
   }
@@ -64,7 +61,6 @@ export default class App extends React.Component {
     this.setState({
       mobileContentOpen: !this.state.mobileContentOpen
     }, () => {
-      console.log('mobileContentOpen:', this.state.mobileContentOpen)
     })
   }
 
