@@ -11,8 +11,9 @@ const App = require('../../dist/server-entry').default
 
 function renderFullPage(html, css) {
   const template = fs.readFileSync(path.join(__dirname, '../../dist/index.html'), 'utf-8')
+
   let HTMLWithMarkUp = template.replace('<app></app>', html)
-  HTMLWithMarkUp = template.replace('<css></css>', css)
+  HTMLWithMarkUp = HTMLWithMarkUp.replace('<css></css>', css)
   return HTMLWithMarkUp
 }
 
@@ -27,5 +28,11 @@ module.exports = function handleRenderForMUI(req, res) {
   const css = sheetsRegistry.toString()
 
   // Send the rendered page back to the client.
-  res.send(renderFullPage(html, css))
+
+  /* debug block starts here */
+  xx = renderFullPage(html, css)
+  /* debug block ends here */
+
+  // res.send(renderFullPage(html, css))
+  res.send(xx)
 }
