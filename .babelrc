@@ -13,6 +13,12 @@
     "@babel/preset-react"
   ],
   "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
     "@babel/plugin-proposal-class-properties",
     "@babel/transform-runtime",
     [
@@ -41,12 +47,6 @@
         "camel2DashComponentName": false
       },
       "@material-ui/core/styles"
-    ],
-    [
-      "@babel/plugin-proposal-decorators",
-      {
-        "legacy": true
-      }
     ]
   ]
 }

@@ -13,6 +13,9 @@ client entry: ```/src/client.js```
 
 server entry: ```/src/server.js```
 
+# Enviorment Setting
+Through npm package: ```dotenv```  & config file: ```/.env```
+
 template: ```/src/template.html```
 
 common root Component: ```/src/Component/App```
@@ -20,15 +23,17 @@ common root Component: ```/src/Component/App```
 store: ```src/Components/store.js```
 
 # run & build
-* build
 ~~~
 npm run build
 ~~~
 
-* run SSR server with webpack --watch & nodemon
+ run SSR server with webpack --watch & nodemon
 ~~~
 npm start
 ~~~
 
-
+* run with SSR:
+~~~
+npm run server:start
+~~~
 
