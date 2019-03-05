@@ -55,7 +55,6 @@ const exercisesArray = [
 // gEB function turn exercises data into an enumeratable array below :
 //  [['shoulders', [practice1, practice2,...]], ['arms',[practice1, practice2...], ...]
 function getExercisesByMuscles(exercises) {
-  console.log("exercises:", exercises);
 
   // initialMuscleRelatedExercises= {muscle1:[], muscle2:[],muscle3:[],...}
   const initialMuscleRelatedExercises = muscles.reduce((accumulator, muscle) => ({

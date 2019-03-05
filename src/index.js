@@ -18,7 +18,6 @@ const theme = createMuiTheme({
 });
 
 
-console.log("a theme object looks like this: \n", theme)
 
 // for injection of MUITheme
 class Main extends React.Component {

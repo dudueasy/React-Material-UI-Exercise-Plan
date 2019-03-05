@@ -46,12 +46,10 @@ class Form extends React.Component {
 
   // handleChange function receive an Event as parameter
   handleChange = ({nativeEvent, target: {name, value}}) => {
-    console.log("handleChange triggered")
 
     this.setState(
       {[name]: value},
       () => {
-        console.log('state is updated')
       }
     )
   }
@@ -62,7 +60,6 @@ class Form extends React.Component {
   render() {
     const {title, muscles, description} = this.state
     const {classes, musclesList, width} = this.props
-    console.log('musclesList:', musclesList)
 
 
     return (
