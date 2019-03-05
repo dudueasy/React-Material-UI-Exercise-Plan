@@ -26,7 +26,8 @@ store: ```src/store.js```
 npm run build
 ~~~
 
-* run:
+* run with SSR:
 ~~~
-npm run server:start~~~
+npm run server:start
+~~~
 
