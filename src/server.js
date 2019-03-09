@@ -21,7 +21,7 @@ const PORT = 3000
 // serve static file
 app.use('/public', express.static('./dist'))
 
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
 
   const sheetsRegistry = new SheetsRegistry();
 
