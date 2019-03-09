@@ -43,4 +43,5 @@ const MUIApp = (
 )
 
 export default MUIApp
+export {sheetsRegistry }
 

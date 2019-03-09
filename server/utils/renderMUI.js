@@ -7,6 +7,7 @@ const {SheetsRegistry} = require('react-jss/lib/jss')
 
 
 const App = require('../../dist/server-entry').default
+const {sheetsRegistry } = require('../../dist/server-entry')
 
 
 function renderFullPage(html, css) {
@@ -19,13 +20,15 @@ function renderFullPage(html, css) {
 
 module.exports = function handleRenderForMUI(req, res) {
   // Create a sheetsRegistry instance.
-  const sheetsRegistry = new SheetsRegistry();
 
   // Render the component to a string.
   const html = ReactDOMServer.renderToString(App)
 
   // Grab the CSS from our sheetsRegistry.
+  // css 只会在 renderToString 执行后完成, 需要使用 App 中注入的 sheetsRegistry 对象
+  // 因此 serverEntry 模块也需要将 内部使用的 sheetsRegistry 导出
   const css = sheetsRegistry.toString()
+  console.log(css)
 
   // Send the rendered page back to the client.
 
