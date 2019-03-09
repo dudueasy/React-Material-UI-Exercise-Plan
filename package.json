@@ -7,7 +7,7 @@
     "client:start": "webpack-dev-server --config ./build/webpack.client.config.js --mode development ",
     "client:build": "webpack --config ./build/webpack.client.config.js --progress",
     "server:build": "webpack --config ./build/webpack.server.config.js --progress",
-    "server:start": "nodemon ./server/server.js",
+    "server:start": "NODE_ENV=production node ./server/server.js",
     "analyze": "webpack  --config ./build/webpack.client.config.js --json > stats.json  && webpack-bundle-analyzer stats.json dist",
     "build": "npm run client:build && npm run server:build",
     "start": "npm run build && npm run server:start"
