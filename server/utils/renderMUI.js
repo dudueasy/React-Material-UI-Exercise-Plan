@@ -28,14 +28,8 @@ module.exports = function handleRenderForMUI(req, res) {
   // css 只会在 renderToString 执行后完成, 需要使用 App 中注入的 sheetsRegistry 对象
   // 因此 serverEntry 模块也需要将 内部使用的 sheetsRegistry 导出
   const css = sheetsRegistry.toString()
-  console.log(css)
 
   // Send the rendered page back to the client.
 
-  /* debug block starts here */
-  xx = renderFullPage(html, css)
-  /* debug block ends here */
-
-  // res.send(renderFullPage(html, css))
-  res.send(xx)
+  res.send(renderFullPage(html, css))
 }
