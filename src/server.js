@@ -12,6 +12,9 @@ import {
 
 import App from './Components/App'
 import theme from './theme'
+const favicon = require('serve-favicon')
+
+
 
 
 const app = express()
@@ -22,6 +25,7 @@ console.log("env", process.env)
 
 // serve static file
 app.use('/public', express.static('./dist'))
+app.use(favicon('favicon.ico'))
 
 app.get('/', (req, res) => {
 
