@@ -15,8 +15,10 @@ import theme from './theme'
 
 
 const app = express()
+require('dotenv').config();
 
-const PORT = 3000
+const PORT = process.env.PORT || 3000
+console.log("env", process.env)
 
 // serve static file
 app.use('/public', express.static('./dist'))
@@ -49,5 +51,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(`server is running on port: http://localhost/:${PORT}`)
+  console.log(`server is running on port: http://localhost:${PORT}`)
 })

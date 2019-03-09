@@ -6,6 +6,7 @@
     "dev:start": "webpack-dev-server --mode development",
     "start": "webpack --mode development --watch &  nodemon ./dist/server.js",
     "build": "webpack --mode production --progress",
+    "server:start": "NODE_ENV=production node ./dist/server.js",
     "analyze": "webpack --json > stats.json  && webpack-bundle-analyzer stats.json dist"
   },
   "sideEffects": false,

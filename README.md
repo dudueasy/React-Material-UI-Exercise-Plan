@@ -32,7 +32,7 @@ npm run build
 npm start
 ~~~
 
-* run with SSR:
+* run with SSR in production mode:
 ~~~
 npm run server:start
 ~~~
