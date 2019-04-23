@@ -1,10 +1,10 @@
 # React with SSR
-feature: A SSR Material UI App
+Feature: A Server Side Rendered Material UI Exercise App
 
-# Enviorment Setting
+# Environment Setting
 Through npm package: ```dotenv```  & config file: ```/.env```
 
-# file structure
+# File Structure
 webpack configuration for client & server bundle: ```/build/*```
 
 babel configuration: ```/.babelrc```
@@ -20,13 +20,18 @@ common root Component: ```/src/Component/App```
 store: ```src/store.js```
 
 
-# build & run
-* build:
+# Build & Run
+* Build:
 ~~~
 npm run build
 ~~~
 
-* run with SSR:
+* Run with Dev-Server
+~~~
+npm run client:start
+~~~
+
+* Run with SSR:
 ~~~
 npm run server:start
 ~~~
