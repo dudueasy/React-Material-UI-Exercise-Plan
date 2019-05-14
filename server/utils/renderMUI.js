@@ -3,7 +3,6 @@ const ReactDOMServer = require('react-dom/server')
 
 const fs = require('fs')
 const path = require('path')
-const {SheetsRegistry} = require('react-jss/lib/jss')
 
 
 const App = require('../../dist/server-entry').default

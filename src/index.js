@@ -1,6 +1,5 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import App from "./Components/App.js"
+import React from 'react';
+import App from './Components/App.js';
 import {MuiThemeProvider, createMuiTheme, createGenerateClassName} from '@material-ui/core/styles';
 
 import JssProvider from 'react-jss/lib/JssProvider';
@@ -18,9 +17,8 @@ const theme = createMuiTheme({
 });
 
 
-
 // for injection of MUITheme
-class Main extends React.Component {
+export default class Main extends React.Component {
   componentDidMount() {
     const jssStyles = document.getElementById('jss-server-side');
     if (jssStyles && jssStyles.parentNode) {
@@ -37,18 +35,6 @@ class Main extends React.Component {
           <App/>
         </MuiThemeProvider>
       </JssProvider>
-    )
+    );
   }
 }
-
-// for react-hot-loader
-if (module.hot) {
-  module.hot.accept();
-}
-
-const rootElement = document.getElementById("root")
-ReactDOM.hydrate(<Main/>, rootElement)
-
-
-
-
