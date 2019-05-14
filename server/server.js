@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const express = require('express');
+const compression = require('compression');
 const favicon = require('serve-favicon');
 
 const handleRenderForMUI = require('./utils/renderMUI');
@@ -12,6 +13,7 @@ require('dotenv').config();
 const port = process.env.PORT || 3000;
 
 const app = express();
+app.use(compression());
 
 app.use(favicon(path.join(__dirname, '../favicon.ico')));
 
