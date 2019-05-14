@@ -9,7 +9,7 @@ let clientConfig = {
   // 定义入口文件
   entry: {
     // 使用 path.join 来获得绝对路径
-    app: path.join(__dirname, '../src/index.js')
+    app: path.join(__dirname, '../src/index.code-splitting.js')
   },
   output: {
     // 定义输出文件名, 这里使用 webpack 变量, [name] 是入口名, 此处对应 app, [hash]是打包完成的文件的哈希值, 用于和浏览器缓存协作.
@@ -17,6 +17,7 @@ let clientConfig = {
     // bundle 输出位置
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/public/',
+    chunkFilename: '[name].js',
   },
   devServer: {
     host: '0.0.0.0',
