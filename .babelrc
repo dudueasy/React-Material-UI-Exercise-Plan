@@ -47,6 +47,9 @@
         "camel2DashComponentName": false
       },
       "@material-ui/core/styles"
+    ],
+    [
+      "@babel/plugin-syntax-dynamic-import"
     ]
   ]
 }
