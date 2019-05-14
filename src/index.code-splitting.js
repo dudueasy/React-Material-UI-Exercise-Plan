@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; 
-import Main from './index.js';
 
 // for react-hot-loader
 if (module.hot) {
