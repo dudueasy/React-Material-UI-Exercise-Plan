@@ -1,5 +1,6 @@
-module.exports = {
+const os = require('os')
 
+module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
@@ -8,15 +9,18 @@ module.exports = {
     rules: [
       // 定义编译 jsx 文件使用的loader(babel-loader)
       {
-        test: /\.jsx$/,
-        use: 'babel-loader'
-      },
-      // 定义 js 文件使用的 loader
-      {
-        test: /\.js$/,
-        use: 'babel-loader',
-        // 排除 node_modules 目录
+        test: /\.jsx?$/,
+        use: [
+          {
+            loader: 'thread-loader',
+            options: {
+              workers: os.cpus().length
+            }
+          }, 
+          'babel-loader',
+        ], 
         exclude: '/node_modules/'
-      }]
+      },
+    ]
   }
 }
