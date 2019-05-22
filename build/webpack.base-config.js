@@ -3,6 +3,9 @@ const os = require('os')
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias:{
+      "@material-ui/core":"@material-ui/core/es"
+    }
   },
   devtool: "cheap-module-source-map",
   module: {
